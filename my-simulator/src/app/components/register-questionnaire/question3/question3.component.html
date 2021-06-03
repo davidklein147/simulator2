@@ -1,0 +1,40 @@
+<div>
+    <small style="font-size:xx-small">profassionally details</small>
+    <h2>please tell us about yourself, profassionally</h2>
+    <br>
+    <div class="row">
+        <div class="form-group col-3">
+            <label for="exampleInputEmail1">medical institution</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            [(ngModel)]="profassionally.medicalIinstitution">
+        </div>
+        <div class="col-1"></div>
+        <div class="form-group col-3">
+            <label for="country">residency</label>
+            <select class="form-control form-control" id="country" [(ngModel)]="profassionally.residency">
+                <option [ngValue]="undefined" selected >select</option>
+            </select>
+        </div>
+        <div class="col-1"></div>
+        <div class="form-group col-3">
+            <label for="city">department</label>
+            <select class="form-control form-control" id="city" [(ngModel)]="profassionally.department">
+                <option [ngValue]="undefined" selected >select...</option>
+            </select>
+        </div>
+        <div class="col-1"></div>
+        <div class="form-group col-3">
+            <div class="row">
+                <div class="col text-right"><label class="text-left" for="exampleInputEmail1">year in residency</label></div>
+                <div class="col text-left"><div class="range text-center" > {{profassionally.yearInResidency}} </div></div>
+            </div>
+            <input type="range" max="5" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                [(ngModel)]="profassionally.yearInResidency">
+        </div>
+
+        
+        
+    </div>
+    <button (click)= "sendDetails()" class= "btn btn-secondary text-uppercase">doue</button>
+    <br>
+</div>

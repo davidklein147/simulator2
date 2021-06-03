@@ -1,0 +1,11 @@
+.range{
+    display:inline-block;
+    height: auto;
+    width: 40px;
+    background-color:lightslategray;
+    border-radius: 50%;
+}
+
+label div{
+    display: inline-block;
+}

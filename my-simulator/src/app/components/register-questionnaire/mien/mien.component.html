@@ -1,0 +1,18 @@
+<div class="container niseVizibility">
+    <app-question2 (page)="page($event)" *ngIf="pageNum === 1"></app-question2>
+    <app-question3 (page)="page($event)" *ngIf="pageNum === 2"></app-question3>
+    <app-question4 *ngIf="pageNum === 3"></app-question4>
+    <div class="row">
+        <div class="col text-right m-3">
+            <button *ngIf="pageNum<3" class="btn btn-secondary text-uppercase" (click)="updatePage()">
+                next</button>
+        </div>
+        <div class="col text-left m-3">
+            <button *ngIf="pageNum>1" class="btn btn-secondary text-uppercase" (click)="downdatePage()">
+                beck</button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <ngb-progressbar class="bottemBar" type="secondary" [value]="50"></ngb-progressbar>
+</div>

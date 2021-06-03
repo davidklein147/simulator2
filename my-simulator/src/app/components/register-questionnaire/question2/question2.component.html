@@ -1,0 +1,51 @@
+<div>
+    <small style="font-size:xx-small">personal details</small>
+    <h2>please tell us about yourself, personally</h2>
+    <br>
+    <div class="row">
+        <div class="form-group col-2">
+            <label for="exampleInputEmail1">age</label>
+            <input name="a" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="enter your age" [(ngModel)]="personally.age">
+        </div>
+        <div class="col-2"></div>
+        <div class="form-group col-2">
+            <label for="country">country</label>
+            <select name="b" class="form-control form-control" id="country" [(ngModel)]="personally.country"
+               >
+                <option [ngValue]="undefined" selected hidden>Select country...</option>
+                <option *ngFor="let stete of stetes"> {{stete}}</option>
+            </select>
+        </div>
+        <div class="col-2"></div>
+        <div class="form-group col-2">
+            <label for="city">city</label>
+            <select name="y" class="form-control form-control" id="city" [disabled]="!citys" [(ngModel)]="personally.city">
+                <option [ngValue]="undefined" selected hidden>Select city...</option>
+                <option *ngFor="let city of citys"> {{city}}</option>
+            </select>
+        </div>
+        <div class="col-2"></div>
+        <div class="form-group col-2">
+            <label for="exampleInputEmail1">graduation year</label>
+            <input name="t" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="enter your graduation year" [(ngModel)]="personally.greduationYear">
+        </div>
+        <div class="col-2"></div>
+        <!-- <div class="form-group col-4"> -->
+            <!-- <label for="dropdownbasic1">academic institiution</label> -->
+            <!-- <div [(ngModel)]="personally.academicIinstitution" name="bb" ngbDropdown class="d-inline-block form-control-range"> -->
+                <!-- <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle -->
+                    <!-- >select your -->
+                    <!-- academic</button> -->
+                <!-- <div name="ab" ngbDropdownMenu aria-labelledby="dropdownBasic1"> -->
+                    <!-- <button ngbDropdownItem>Action - 1</button> -->
+                    <!-- <button ngbDropdownItem>Another Action</button> -->
+                    <!-- <button ngbDropdownItem>Something else is here</button> -->
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </div> -->
+    </div>
+    <br>
+    <button (click)= "sendDetails()" class= "btn btn-secondary text-uppercase">next</button>
+</div>
