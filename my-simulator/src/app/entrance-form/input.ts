@@ -1,32 +1,39 @@
+import { OnInit } from "@angular/core";
 import { Purpose } from "./purpose";
 
-export class Input {
+export class Input  {
     type: string;
+    label: string;
     name: string;
-    hidden: boolean;
-    placeholder: string;
-    dicecreption: string;
+    event: string;
 
-    constructor(key: string, index: number, purpose: Purpose) {
-        this.name = key + index;
-        switch (key) {
-            case 'purpose.register':
-                this.placeholder = "enter "
-                break;
+    constructor(key: string, value:any, event?) {
+        console.log((typeof(value) == typeof("string")));
         
-            default:
-                break;
-        }
-        
-        
+        this.name = key;
+        this.label = (typeof(value) == typeof("string"))? value: value.name;
+        this.event = value.event ? value.event : "";
+        console.log(this.event);
+
         switch (key) {
             case 'email':
             case 'password':
                 this.type = key;
                 break;
+            case 'authPassword':
+                this.type = "password";
+                break;
             default:
                 this.type = 'text'
                 break;
-        }
+        }      
     }
+
+    OnInit(): void {
+    //   if(this.event){
+            // document.getElementById(this.name).addEventListener(this.event,() =>{console.log("event");
+            // })
+        // }
+    }
+
 }

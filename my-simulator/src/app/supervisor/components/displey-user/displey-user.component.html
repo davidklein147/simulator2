@@ -1,0 +1,32 @@
+<div class="container">
+        <!-- <form action=""> -->
+        <div class="row" [ngClass]='{"border border-primary":users}'>
+
+                <label class="col-5 m-1 form-label">id<input [disabled]="allUsers" class="form-control" type="text"
+                                name="" id="" [(ngModel)]="user.details.id"></label>
+
+                <label class="col-5 m-1 form-label">name<input [disabled]="allUsers" class="form-control" type="text"
+                                name="" id="" [(ngModel)]="user.details.name"></label>
+
+                <label class="col-5 m-1 form-label">passport<input [disabled]="allUsers" class="form-control"
+                                type="text" name="" id="" [(ngModel)]="user.details.passport"></label>
+
+                <label  class="col-5 m-1 form-label">phone number<input [disabled]="allUsers" class="form-control"
+                                type="text" name="" id="" [(ngModel)]="user.details.phoneNum"></label>
+
+                <label  *ngIf ="!allUsers" class="col-5 m-1 form-label">user name<input  class="form-control"
+                                type="text" name="" id=""  [(ngModel)]="user.details.id"></label>
+
+                <label *ngIf ="!allUsers" class="col-5 m-1 form-label">password<input  class="form-control"
+                                type="text" name="" id="" disabled [value]="user.register.password"></label>
+
+                <label class="col-5 m-1 form-label">role<input [disabled]="allUsers" class="form-control" type="text"
+                                name="" id="" [(ngModel)]="user.role"></label>
+
+                <label class="col-5 m-1 form-label">role number<input [disabled]="allUsers" class="form-control"
+                                type="text" name="" id="" [(ngModel)]="user.roleNum"></label>
+        </div>
+        <br>
+        <button [hidden]="allUsers" di class="col-2 btn btn-secondary text-uppercase">create</button>
+        <!-- </form> -->
+</div>

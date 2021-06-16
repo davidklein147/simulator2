@@ -12,14 +12,17 @@
         <div class="form-group col-3">
             <label for="country">residency</label>
             <select class="form-control form-control" id="country" [(ngModel)]="profassionally.residency">
-                <option [ngValue]="undefined" selected >select</option>
+                <option [ngValue]="undefined" selected hidden >select</option>
+                <option  >select...</option>
+
             </select>
         </div>
         <div class="col-1"></div>
         <div class="form-group col-3">
             <label for="city">department</label>
             <select class="form-control form-control" id="city" [(ngModel)]="profassionally.department">
-                <option [ngValue]="undefined" selected >select...</option>
+                <option [ngValue]="undefined" selected hidden >select...</option>
+                <option  >select...</option>
             </select>
         </div>
         <div class="col-1"></div>
@@ -35,6 +38,6 @@
         
         
     </div>
-    <button (click)= "sendDetails()" class= "btn btn-secondary text-uppercase">doue</button>
+    <button (click)= "sendDetails()" class= "btn btn-secondary text-uppercase">done</button>
     <br>
 </div>

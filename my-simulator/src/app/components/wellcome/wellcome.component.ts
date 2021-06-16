@@ -17,8 +17,11 @@ export class WellcomeComponent implements OnInit {
 
   log(): void {
     console.log("test");
-    this.data.isLogin= true;
-
+    console.log(this.data.isLogin);
+    localStorage.setItem("isLogin", JSON.stringify(true));
+    this.data.isLogin = JSON.parse(localStorage.getItem("isLogin"))
+    console.log(this.data.isLogin);
+    
   }
 
 }

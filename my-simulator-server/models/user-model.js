@@ -1,4 +1,5 @@
 const mongoose = require ('mongoose');
+const internDetails = require('./intern-details-model');
 const Schema = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -35,6 +36,12 @@ var userSchema = new Schema({
     roleNum:{
         type: Number
     },
+    moreDetails :
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'internDetail',
+        },
+
     
 });
 

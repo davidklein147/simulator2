@@ -1,0 +1,22 @@
+<div class="container">
+    <label>file <input type="file" accept="*.png.txt" multiple (change)=addFileToStorage($event)></label>
+</div>
+<div *ngFor="let i of uploadProgress" class="progress">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(i|async) + '%'">"{{i|async|number:'1.0-0'}}%"</div>
+</div>
+<br>
+<!-- <div class="progress">
+
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(pros) + '%'"></div>
+
+    </div> -->
+<br>
+<button (click)="upload()" class="text-uppercase">upload</button>
+<br>
+<br>
+<br>
+<br>
+
+<div *ngFor="let url Of downloadURL" class="alert alert-info" role="alert">
+    File uploaded: <a [href]="url">{{url}}</a>
+</div>

@@ -12,7 +12,7 @@
         <div class="form-group col-2">
             <label for="country">country</label>
             <select name="b" class="form-control form-control" id="country" [(ngModel)]="personally.country"
-               >
+              (click)="stetesList()" >
                 <option [ngValue]="undefined" selected hidden>Select country...</option>
                 <option *ngFor="let stete of stetes"> {{stete}}</option>
             </select>

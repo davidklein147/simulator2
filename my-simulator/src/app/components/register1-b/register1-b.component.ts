@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Login } from 'src/app/interfaces/intern';
 import { DataService } from 'src/app/servers/data.service';
 import { HttpServerService } from 'src/app/servers/http-server.service';
 
@@ -43,7 +44,7 @@ export class Register1BComponent implements OnInit {
     this.isEqualMassege = this.isEqual ? "correct password" : "not correct password";
   }
 
-  send(register: object): void {
+  send(register:Login): void {
     console.log(register);
     
     this.data.inteinRegister.register = register;
@@ -51,8 +52,12 @@ export class Register1BComponent implements OnInit {
     this.data.regDB();
 
     this.data.isCreate().subscribe(up =>{
-      if(up)
-      this.router.navigate(['/thanks'])
+      if(up){
+        if(this.data.data){
+
+          this.router.navigate(['/thanks'])
+        }
+      }
     })
 
   }

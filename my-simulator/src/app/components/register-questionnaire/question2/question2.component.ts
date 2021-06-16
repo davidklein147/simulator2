@@ -1,5 +1,6 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import {} from 'events';
+import { Personally } from '../profil';
 import { ProfilService } from '../profil.service';
 
 @Component({
@@ -12,13 +13,7 @@ export class Question2Component implements OnInit {
   @Output() page: EventEmitter<number> = new EventEmitter<number>();
  
 
-  personally: {
-    age: number,
-    country: string,
-    city: string,
-    greduationYear: string,
-    academicIinstitution: string
-  };
+  personally: Personally;              
 
   scops : {
     NY:string[],

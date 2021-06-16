@@ -1,4 +1,5 @@
 const mongoose = require ('mongoose');
+const userModel = require('./user-model');
 const Schema = mongoose.Schema;
 
 var internDetails = new Schema({
@@ -19,7 +20,7 @@ var internDetails = new Schema({
             type: String,
         }
       },
-      professionally: {
+      profassionally: {
         medicalIinstitution: {
             type: String,
         },

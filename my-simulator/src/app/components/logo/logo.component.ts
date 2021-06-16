@@ -7,7 +7,9 @@ import { DataService } from 'src/app/servers/data.service';
   styleUrls: ['./logo.component.css']
 })
 export class LogoComponent implements OnInit {
+  
   isCreate: boolean;
+
   constructor(public data: DataService) {
     this.data.isCreate().subscribe(b => this.isCreate = b)
   }

@@ -2,19 +2,16 @@ import { Input } from "./input";
 import { Purpose } from "./purpose";
 
 export class Form<T>{
-    purpose: Purpose;
+    //purpose: Purpose;
     inputs: Input[];
     obj: T;
-    
-    constructor(obj: T, purpose: Purpose) {
+
+    constructor(obj: T) {
         this.obj = obj;
-        this.purpose = purpose;
         this.inputs = [];
 
-        let index = 0;
-        for (let key in Object.keys(obj)) {
-            index++;
-            let input = new Input(key, index, this.purpose)
+        for (const [key, value] of Object.entries(obj)) {
+            let input = new Input(key, value)
             this.inputs.push(input);
         }
     }

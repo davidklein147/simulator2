@@ -1,13 +1,13 @@
 <div class="container">
 
     <div style="float: left;" *ngIf="data.isLogin">
-        <img class="my-3" src="assets/img/images1.jpg" style="height: 50px; width: 50px;">
+        <img class="my-3" src="assets/img/images1.jpg" style="height: 50px; width: 50px;" [routerLink]='["/"]'>
     </div>
 
     <div *ngIf="data.isLogin" class="text-sm-right">
         <div *ngIf="!isCreate">already have on account? <a [routerLink]='["/login"]'>log in</a></div>
         
-        <div *ngIf="isCreate && !data.inteinRegister.details.name">not yet do'nt have on
+        <div *ngIf="isCreate && !data.inteinRegister.details.name">not yet don't have an
             account?<a [routerLink]='["/entrance"]'>ragister</a></div>
         
             <p *ngIf="isCreate && data.inteinRegister.details.name ">

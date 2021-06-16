@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword2">authentication Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword2" #password2 
+                    <input type="" class="form-control" id="exampleInputPassword2" #password2 
                     placeholder="enter your password again" (input)="checkIsSame(password1.value, password2.value)">
                     <small *ngIf="isEqual != null" class="form-text " [ngClass]="{'green': isEqual, 'red': !isEqual}">{{isEqualMassege}}</small>
                 </div>

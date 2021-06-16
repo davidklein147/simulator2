@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { of, Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { InternDetailsComponent } from '../components/register1/intern-details.component';
-import { User } from '../interfaces/intern';
+import { resLogin, User, UserRegister } from '../interfaces/intern';
 import { HttpServerService } from './http-server.service';
 
 @Injectable({
@@ -10,43 +10,18 @@ import { HttpServerService } from './http-server.service';
 })
 export class DataService {
 
-updateIsCreate: BehaviorSubject<boolean>;
-
-  inteinRegister: {
-    details: User;
-    register: object;
-    role: string;
-    roleNum: number;
-  }
-
-  isLogin = false;
+  updateIsCreate: BehaviorSubject<boolean>;
+  inteinRegister: UserRegister = new UserRegister();
+  isLogin = JSON.parse(localStorage.getItem("isLogin"));
   img: string;
   code: string;
-  
+  data: resLogin;
 
   constructor(private httpServer: HttpServerService) {
     this.updateIsCreate = new BehaviorSubject<boolean>(false);
-    this.inteinRegister = {
-      details: {
-        id: '',
-        name: '',
-        passport: '',
-        phoneNum: ''
-      },
-      register: {
-        userName: null,
-        passwrod: null
-      },
-      role: '',
-      roleNum: null
-    };
-      this.code = null;
-      this.img = null;
-      
-      
-      var a = JSON.stringify(this.inteinRegister);
-
-      
+    this.code = null;
+    this.img = null;
+    var a = JSON.stringify(this.inteinRegister);
   }
 
   sendCode(): void {
@@ -60,18 +35,19 @@ updateIsCreate: BehaviorSubject<boolean>;
 
   regDB(): void {
     this.httpServer.createIntern(this.inteinRegister).subscribe(
-    res => {    
-      this.updateIsCreate.next(true);
-      console.log(res);
-    },
-    err => {
-      this.updateIsCreate.next(false);
-      console.log(err);
-      
-    });
+      res => {
+        this.data = res;
+        this.updateIsCreate.next(true);
+        console.log(res);
+        console.log(this.httpServer.token);
+      },
+      err => {
+        this.updateIsCreate.next(false);
+        console.log(err);
+      });
   }
 
-  isCreate():Observable<boolean>{
+  isCreate(): Observable<boolean> {
     return this.updateIsCreate;
   }
 }
