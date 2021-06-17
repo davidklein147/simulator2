@@ -3,7 +3,8 @@ export class Profil {
     personally: Personally;
     profassionally: Professionally;
     
-    constructor() {
+    constructor( userId?:string) {
+        this.userId = userId
         this.personally = new Personally();
         this.profassionally = new Professionally()
     }

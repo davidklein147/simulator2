@@ -9,7 +9,7 @@ function token(isNew, token, _id, id, name, roleNum) {
         this.name = name;
         this.roleNum = roleNum;
         this.date = Date.now() + liveTime;
-        this.arrDe = [this._id, this._id, this.name, this.roleNum, this.date]
+        this.arrDe = [this._id, this.id, this.name, this.roleNum, this.date]
         this.token = enCoding.getEncrypto(this.arrDe.join(split));
         console.log(this.token);
     }

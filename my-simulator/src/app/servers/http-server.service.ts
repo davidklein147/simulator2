@@ -34,6 +34,10 @@ export class HttpServerService {
 
   saveToken(res:any):void{
     localStorage.setItem("token", res.token)
+    localStorage.setItem("data", JSON.stringify(res))
+    console.log(localStorage.getItem("token"));
+    console.log(JSON.parse(localStorage.getItem("data")))
+    
   }
 
   postWithToken<T>(path:string,body:any,headers?:{}):Observable<T>{
@@ -46,7 +50,7 @@ export class HttpServerService {
 
   addHeaders(headers:{}):object{
     headers =headers?headers:{};
-    headers['x-access-token'] = this.token||"jk";
+    headers['x-access-token'] = localStorage.getItem("token");
     headers['content-type'] = "application/json";  
     return{
       headers: new HttpHeaders(headers)

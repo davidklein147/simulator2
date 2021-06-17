@@ -1,9 +1,10 @@
 const userModel = require('../models/user-model')
+const details = require('../models/intern-details-model')
 
 function internsController(){
     function createDoc(req, res){
         console.log('createdoc');
-        // console.log(req);
+        console.log(req.body);
         if (!req.body || !req.body.userId) {
             return res.status(400).send();
         }
@@ -26,8 +27,7 @@ function internsController(){
             doc.populate('moreDetails', (err, details) => {
                 if (err) {
                     console.log("err");
-                }
-                
+                } 
                 console.log("successfully " + details);
                 res.status(200).send(doc);
             })
@@ -39,5 +39,4 @@ function internsController(){
         gerUserWithInternInfo: gerUserPopulatingAllInfo
     }
 }
-
 module.exports = internsController()

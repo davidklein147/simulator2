@@ -18,6 +18,7 @@ app.use('/api', require('./controllers/tokenController'));
 
 app.use('/api/users', require('./routers/userRouter'))
 app.use('/api/interns', require('./routers/internRouter'))
+app.use('/api/supervisor', require('./routers/supervisorRouter'))
 
 
 

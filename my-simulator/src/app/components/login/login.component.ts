@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Login } from 'src/app/interfaces/intern';
 import { DataService } from 'src/app/servers/data.service';
 import { HttpServerService } from 'src/app/servers/http-server.service';
@@ -11,7 +12,7 @@ import { HttpServerService } from 'src/app/servers/http-server.service';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private data: DataService, private http: HttpServerService) {
+  constructor(private data: DataService, private http: HttpServerService, private router: Router) {
     this.data.updateIsCreate.next(true);
   }
 
@@ -23,6 +24,13 @@ export class LoginComponent implements OnInit {
     if (login.userName && login.password) {
       this.http.login(login).subscribe(res => {
         console.log(res);
+        
+        if(res.roleNum < 100){
+          this.router.navigate(["supervisor"])
+        }
+        else if(res.moreDetails == null){
+          this.router.navigate(["thanks"])
+        }
       })
     }
   }

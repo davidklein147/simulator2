@@ -39,7 +39,7 @@ export class DataService {
         this.data = res;
         this.updateIsCreate.next(true);
         console.log(res);
-        console.log(this.httpServer.token);
+        console.log(JSON.parse(localStorage.getItem("data"))._Id);
       },
       err => {
         this.updateIsCreate.next(false);

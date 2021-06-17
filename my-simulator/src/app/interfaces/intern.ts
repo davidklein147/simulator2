@@ -44,5 +44,6 @@ export interface resLogin {
     token: string,
     roleNum: number
     headers?
+    moreDetails: string
 }
 

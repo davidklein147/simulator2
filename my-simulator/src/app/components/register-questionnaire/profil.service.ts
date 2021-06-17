@@ -8,35 +8,12 @@ import { Profil } from './profil';
 })
 export class ProfilService {
 
-  profil:Profil = new Profil()
-  // profilo: {
-    // userId:string
-    // personally: object;
-    // profassionally: {
-      // medicalIinstitution: string,
-      // residency: string,
-      // department: string,
-      // yearInResidency: number;
-    // }
-  // }
+  profil:Profil;
 
   constructor(private http:HttpServerService ,private data: DataService) {
-    // this.profilo = {
-      // userId: data.data._id,
-      // personally: {
-        // age: '',
-        // country: '',
-        // city: '',
-        // greduationYear: '',
-        // academicIinstitution: ''
-      // },
-      // profassionally: {
-        // medicalIinstitution: '',
-        // residency: '',
-        // department: '',
-        // yearInResidency:null
-      // }
-    // }
+    this.profil = new Profil(JSON.parse(localStorage.getItem("data"))._id)
+    console.log(JSON.parse(localStorage.getItem("data"))._id);
+    
   }
 
   set<T>(key: string, data: T): void {
@@ -46,7 +23,7 @@ export class ProfilService {
 
   regDB():void{
     console.log(this.profil);
-    this.http.postWithToken<any>("api/interns/regmoreinfo",this.profil)
+    this.http.postWithToken<any>("interns/regmoreinfo",this.profil)
     .subscribe(res =>{
       console.log(res);
     },
