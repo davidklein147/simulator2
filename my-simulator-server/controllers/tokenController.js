@@ -5,6 +5,7 @@ const tokenModel = require('../models/token-model')
 
 function chackAuth(req, res, next){
     console.log('chack');
+    console.log(req.body);
     if(!req.headers["x-access-token"]){
         return res.status(401).send();
     }

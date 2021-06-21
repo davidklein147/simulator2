@@ -32,8 +32,6 @@ export class Register1BComponent implements OnInit {
       return
     }
     this.http.chackIsUse(userName).subscribe(isUse => {
-      console.log(isUse);
-      
       this.isUse = isUse;
       this.isAvailable = `the user name is${this.isUse?"'nt ":" "}available`;
     })
@@ -45,16 +43,11 @@ export class Register1BComponent implements OnInit {
   }
 
   send(register:Login): void {
-    console.log(register);
-    
     this.data.inteinRegister.register = register;
-    console.log(this.data.inteinRegister.register);
     this.data.regDB();
-
     this.data.isCreate().subscribe(up =>{
       if(up){
-        if(this.data.data){
-
+        if(this.data.userName){
           this.router.navigate(['/thanks'])
         }
       }

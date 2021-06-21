@@ -7,10 +7,12 @@ app.listen(port, function () {
 });
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/simulator');
+mongoose.connect('mongodb+srv://davidklein:z0533170147@cluster0.2q6t2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+//mongoose.connect('mongodb://127.0.0.1:27017/simulator');
 
 app.use(require('cors')());
-app.use(express.json());
+app.use(express.json({limit:'1000kb'}));
+
 
 app.use('/auth', require('./routers/authRouter'));
 

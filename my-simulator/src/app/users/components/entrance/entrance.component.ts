@@ -10,6 +10,7 @@ export class EntranceComponent implements OnInit {
   kindUser: string = 'intern';
   constructor(public data: DataService) {
      data.updateIsCreate.next(false);
+     data.userName.next("")
    }
 
   ngOnInit(): void {

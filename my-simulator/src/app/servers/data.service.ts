@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of, Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { InternDetailsComponent } from '../components/register1/intern-details.component';
+import { InternDetailsComponent } from '../users/components/register1/intern-details.component';
 import { resLogin, User, UserRegister } from '../interfaces/intern';
 import { HttpServerService } from './http-server.service';
 
@@ -11,6 +11,7 @@ import { HttpServerService } from './http-server.service';
 export class DataService {
 
   updateIsCreate: BehaviorSubject<boolean>;
+  userName: BehaviorSubject<string>;
   inteinRegister: UserRegister = new UserRegister();
   isLogin = JSON.parse(localStorage.getItem("isLogin"));
   img: string;
@@ -19,9 +20,10 @@ export class DataService {
 
   constructor(private httpServer: HttpServerService) {
     this.updateIsCreate = new BehaviorSubject<boolean>(false);
+    this.userName = new BehaviorSubject<string>(JSON.parse( localStorage.getItem("name")))
     this.code = null;
     this.img = null;
-    var a = JSON.stringify(this.inteinRegister);
+    
   }
 
   sendCode(): void {
@@ -38,8 +40,7 @@ export class DataService {
       res => {
         this.data = res;
         this.updateIsCreate.next(true);
-        console.log(res);
-        console.log(JSON.parse(localStorage.getItem("data"))._Id);
+        this.userName.next(res.name)
       },
       err => {
         this.updateIsCreate.next(false);
@@ -50,4 +51,9 @@ export class DataService {
   isCreate(): Observable<boolean> {
     return this.updateIsCreate;
   }
+
+  getName():Observable<string>{
+    return this.userName;
+  }
+
 }

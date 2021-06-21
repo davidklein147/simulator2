@@ -1,12 +1,15 @@
 export class FileUpload {
     name: string;
     url: string;
-    file:File;
-    suprevisorId:string;
+    file?: File;
+    supervisorId: string;
+    date: number;
+    
 
-    constructor(file:File, name: string, supervisorId: string){
+    constructor( name: string, supervisorId: string, file?: File) {
         this.file = file;
         this.name = name;
-        this.suprevisorId = supervisorId;
+        this.supervisorId = supervisorId;
+        this.date = Date.now()
     }
 }

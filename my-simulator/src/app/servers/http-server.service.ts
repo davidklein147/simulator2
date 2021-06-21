@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { pathToFileURL } from 'url';
+import { LogoComponent } from '../users/components/logo/logo.component';
 import { Login, resLogin, User } from '../interfaces/intern';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class HttpServerService {
 
   baseUrl = "http://localhost:8080/";
   token: string = null
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient ) {
     this.token = localStorage.getItem("token")
   }
 
@@ -33,14 +34,12 @@ export class HttpServerService {
   }
 
   saveToken(res:any):void{
-    localStorage.setItem("token", res.token)
-    localStorage.setItem("data", JSON.stringify(res))
-    console.log(localStorage.getItem("token"));
-    console.log(JSON.parse(localStorage.getItem("data")))
-    
+    localStorage.setItem("token", res.token);
+    localStorage.setItem("data", JSON.stringify(res));     
   }
 
-  postWithToken<T>(path:string,body:any,headers?:{}):Observable<T>{
+  postWithToken<T>(path:string,body:T,headers?:{}):Observable<any>{
+    console.log("post");
     return this.http.post<T>(`${this.baseUrl}api/${path}`,body,this.addHeaders(headers))
   }
 

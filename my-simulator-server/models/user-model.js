@@ -40,9 +40,7 @@ var userSchema = new Schema({
         {
         type: Schema.Types.ObjectId,
         ref: 'internDetail',
-        },
-
-    
+        } 
 });
 
 module.exports = mongoose.model('user',userSchema);

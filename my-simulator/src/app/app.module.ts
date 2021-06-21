@@ -10,14 +10,14 @@ import { environment } from '../environments/environment'
 import { from } from 'rxjs';
 
 import { AppComponent } from './app.component';
-import { WellcomeComponent } from './components/wellcome/wellcome.component';
-import { EntranceComponent } from './components/entrance/entrance.component';
-import { InternDetailsComponent } from './components/register1/intern-details.component';
-import { InternCodeComponent } from './components/register2/intern-code.component';
-import { InternSpotComponent } from './components/register3/intern-spot.component';
-import { LogoComponent } from './components/logo/logo.component';
-import { Register1BComponent } from './components/register1-b/register1-b.component';
-import { LoginComponent } from './components/login/login.component';
+import { WellcomeComponent } from './users/components/wellcome/wellcome.component';
+import { EntranceComponent } from './users/components/entrance/entrance.component';
+import { InternDetailsComponent } from './users/components/register1/intern-details.component';
+import { InternCodeComponent } from './users/components/register2/intern-code.component';
+import { InternSpotComponent } from './users/components/register3/intern-spot.component';
+import { LogoComponent } from './users/components/logo/logo.component';
+import { Register1BComponent } from './users/components/register1-b/register1-b.component';
+import { LoginComponent } from './users/components/login/login.component';
 import { QuestionComponent } from './components/register-questionnaire/question/question.component';
 import { Question2Component } from './components/register-questionnaire/question2/question2.component';
 import { MienComponent } from './components/register-questionnaire/mien/mien.component';
@@ -30,6 +30,7 @@ import { DispleyUserComponent } from './supervisor/components/displey-user/displ
 import { CreateUserComponent } from './supervisor/components/create-user/create-user.component';
 import { AddTestComponent } from './supervisor/components/add-test/add-test.component';
 import { TestComponent } from './entrance-form/test/test.component';
+import { DoTestComponent } from './interns/components/do-test/do-test.component';
 
 
 
@@ -56,6 +57,7 @@ import { TestComponent } from './entrance-form/test/test.component';
     CreateUserComponent,
     AddTestComponent,
     TestComponent,
+    DoTestComponent,
   ],
   imports: [
     BrowserModule,

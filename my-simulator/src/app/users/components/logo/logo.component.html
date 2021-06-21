@@ -1,0 +1,15 @@
+<div class="container mt-2" >
+
+    <div style="float: left;" *ngIf="data.isLogin">
+        <img src="assets/img/images1.jpg" style="height: 50px; width: 50px;" [routerLink]='["/"]'>
+    </div>
+
+    <div *ngIf="data.isLogin" class="text-sm-right">
+        <div *ngIf="!isCreate">already have on account? <a [routerLink]='["/login"]'>log in</a></div>
+
+        <div *ngIf="isCreate && !name">not yet don't have an
+            account?<a [routerLink]='["/entrance"]'>ragister</a></div>
+
+        <h5 *ngIf="isCreate && name"><span class=" text-center name"> {{name[0]}} </span> {{name}}</h5>
+    </div>
+</div>

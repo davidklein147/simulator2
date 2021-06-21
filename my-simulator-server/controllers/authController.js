@@ -42,7 +42,7 @@ function userController() {
             return res.status(400).send()
         }
         userModel.findOne({ "register.userName": req.body.userName },
-            { _id: 1, "details.id": 1, "details.name": 1, "register.password": 1, roleNum: 1 },
+            { _id: 1, "details.id": 1, "details.name": 1, "register.password": 1, roleNum: 1, moreDetails:1 },
             function (err, doc) {
                 console.log(doc);
                 if (err) {
@@ -57,7 +57,8 @@ function userController() {
                     return res.status(401).send({ mas: "user name or password is't correct" });
                 }
                 newToken = new tokenModel(true, null, doc._id, doc.details.id,
-                    doc.name, doc.roleNum)
+                    doc.details.name, doc.roleNum)
+                    console.log(doc.moreDetails);
                 res.status(200).send({ _id: doc._id, name: doc.details.name, roleNum: doc.roleNum, token: newToken.token, moreDetails: doc.moreDetails })
             })
     }

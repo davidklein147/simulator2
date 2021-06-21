@@ -14,17 +14,17 @@ export class LoginComponent implements OnInit {
 
   constructor(private data: DataService, private http: HttpServerService, private router: Router) {
     this.data.updateIsCreate.next(true);
+    this.data.userName.next('')
   }
 
   ngOnInit(): void {
   }
 
   send(login: Login): void {
-    console.log(login);
     if (login.userName && login.password) {
       this.http.login(login).subscribe(res => {
         console.log(res);
-        
+        this.data.userName.next(res.name)
         if(res.roleNum < 100){
           this.router.navigate(["supervisor"])
         }

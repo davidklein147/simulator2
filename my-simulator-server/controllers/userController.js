@@ -1,4 +1,3 @@
-const Mongoose = require('mongoose');
 const userModel = require('../models/user-model')
 
 function usersController() {
@@ -16,7 +15,7 @@ function usersController() {
             return res.status(401).send()
         }
         console.log("all");
-        userModel.find(function (err, list) {
+         userModel.find(function (err, list) {
             if (err) {
                return res.status(500).send()
             }
