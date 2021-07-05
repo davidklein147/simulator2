@@ -1,3 +1,4 @@
+const { find } = require("../models/test-model");
 const testModel =require("../models/test-model");
 const userModel = require("../models/user-model");
 
@@ -15,8 +16,17 @@ function supervisorController(){
              res.status(201).send()
          })
     }
+    function getAllTests(req, res){
+        testModel.find((err, listDoc)=>{
+            if(err){
+                return res.status(500).send()
+            }
+            res.status(200).send(listDoc)
+        })
+    }
     return {
-        addTest
+        addTest,
+        getAllTests
     }
 }
 module.exports = supervisorController()

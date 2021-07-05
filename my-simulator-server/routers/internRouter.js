@@ -3,6 +3,7 @@ const internController = require('../controllers/internController')
 
 const router = express.Router();
 router.post('/regmoreinfo', internController.createDoc)
+router.post('/answers', internController.answer)
 router.get('/gerUserWithInternInfo/:_id', internController.gerUserWithInternInfo)
 
 module.exports = router;

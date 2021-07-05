@@ -1,4 +1,4 @@
-<div class="container mt-2" >
+<div class="container mt-2">
 
     <div style="float: left;" *ngIf="data.isLogin">
         <img src="assets/img/images1.jpg" style="height: 50px; width: 50px;" [routerLink]='["/"]'>
@@ -9,7 +9,13 @@
 
         <div *ngIf="isCreate && !name">not yet don't have an
             account?<a [routerLink]='["/entrance"]'>ragister</a></div>
-
-        <h5 *ngIf="isCreate && name"><span class=" text-center name"> {{name[0]}} </span> {{name}}</h5>
+        <div ngbDropdown class="d-inline-block withoutToggle">
+            <h5 *ngIf="isCreate && name" id="userActions" ngbDropdownToggle><span class=" text-center name"> {{name[0]}} </span> {{name}} </h5>
+            <div ngbDropdownMenu aria-labelledby="userActions">
+                <!-- <div ngbDropdownItem>Action - 1</div>
+                <div ngbDropdownItem>Another Action</div> -->
+                <div ngbDropdownItem (click) ="logOut()">log out</div>
+            </div>
+        </div>
     </div>
 </div>

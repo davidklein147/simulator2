@@ -24,12 +24,16 @@ export class LoginComponent implements OnInit {
     if (login.userName && login.password) {
       this.http.login(login).subscribe(res => {
         console.log(res);
-        this.data.userName.next(res.name)
+        localStorage.setItem("name", res.name)
+        this.data.userName.next(localStorage.getItem("name"))
         if(res.roleNum < 100){
-          this.router.navigate(["supervisor"])
+          this.router.navigate(["supervisor"]);
         }
         else if(res.moreDetails == null){
-          this.router.navigate(["thanks"])
+          this.router.navigate(["thanks"]);
+        }
+        else{
+          this.router.navigate(['do-test']);
         }
       })
     }

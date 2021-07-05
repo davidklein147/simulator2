@@ -19,8 +19,8 @@ export class DataService {
   data: resLogin;
 
   constructor(private httpServer: HttpServerService) {
-    this.updateIsCreate = new BehaviorSubject<boolean>(false);
-    this.userName = new BehaviorSubject<string>(JSON.parse( localStorage.getItem("name")))
+    this.userName = new BehaviorSubject<string>( localStorage.getItem("isLogin")? localStorage.getItem("name"):'')
+    this.updateIsCreate = new BehaviorSubject<boolean>(this.userName? true: false);
     this.code = null;
     this.img = null;
     
@@ -40,7 +40,8 @@ export class DataService {
       res => {
         this.data = res;
         this.updateIsCreate.next(true);
-        this.userName.next(res.name)
+        localStorage.setItem("name", res.name)
+        this.userName.next(localStorage.getItem("name"))
       },
       err => {
         this.updateIsCreate.next(false);

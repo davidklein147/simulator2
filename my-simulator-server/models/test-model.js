@@ -5,8 +5,7 @@ const schema = mongoose.Schema({
         type:String
     },
     file:{
-        name:{
-            type: String},
+       type:mongoose.Schema.Types.Mixed,
     },
     url:{
         type: String

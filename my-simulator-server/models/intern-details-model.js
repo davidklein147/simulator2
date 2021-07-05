@@ -3,6 +3,14 @@ const userModel = require('./user-model');
 const Schema = mongoose.Schema;
 
 var internDetails = new Schema({
+    userId:{
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    },
+    supervisorId:{
+        type: Schema.Types.ObjectId,
+        ref:'supervisor'
+    },
     personally: {
         age: {
             type: Number,
