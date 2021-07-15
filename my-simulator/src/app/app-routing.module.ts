@@ -7,8 +7,8 @@ import { InternSpotComponent } from './users/components/register3/intern-spot.co
 import { WellcomeComponent } from './users/components/wellcome/wellcome.component';
 import { Register1BComponent } from './users/components/register1-b/register1-b.component';
 import { LoginComponent } from './users/components/login/login.component';
-import { QuestionComponent } from './components/register-questionnaire/question/question.component';
-import { MienComponent } from './components/register-questionnaire/mien/mien.component';
+import { QuestionComponent } from './register-questionnaire/components/question/question.component';
+import { MienComponent } from './register-questionnaire/components/mien/mien.component';
 import { MienComponent as SuperMienComponent } from './supervisor/components/mien/mien.component';
 import { AllUsersComponent } from './supervisor/components/all-users/all-users.component';
 import { OptionsListComponent } from './supervisor/components/options-list/options-list.component';
@@ -16,6 +16,7 @@ import { CreateUserComponent } from './supervisor/components/create-user/create-
 import { AddTestComponent } from './supervisor/components/add-test/add-test.component';
 import { TestComponent } from './entrance-form/test/test.component';
 import { DoTestComponent } from './interns/components/do-test/do-test.component';
+import { AcademicsMangementComponent } from './admin/components/academics-mangement/academics-mangement.component';
 
 const routes: Routes = [
   { path: '', component: WellcomeComponent },
@@ -38,7 +39,8 @@ const routes: Routes = [
       { path: 'addtest', component: AddTestComponent },
     ]
   },
-  {path: 'do-test', component: DoTestComponent}
+  {path: 'do-test', component: DoTestComponent},
+  {path: 'academicMangement', component: AcademicsMangementComponent}
 ];
 
 @NgModule({

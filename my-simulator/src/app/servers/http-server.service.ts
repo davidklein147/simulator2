@@ -2,9 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { pathToFileURL } from 'url';
-import { LogoComponent } from '../users/components/logo/logo.component';
-import { Login, resLogin, User } from '../interfaces/intern';
+import { Login, resLogin } from '../interfaces/intern';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +48,7 @@ export class HttpServerService {
     return this.http.get<T>(path);
   }
   getImage(path: string, headers?): Observable<any> {
-    return this.http.get(path,  { responseType: 'blob'});
+    return this.http.get(path, { responseType: 'blob'});
   }
 
 
@@ -59,19 +57,8 @@ export class HttpServerService {
     headers = headers ? headers : {};
     headers['x-access-token'] = localStorage.getItem("token");
     headers['content-type'] = "application/json";
-    headers['access-control-allow-headers']=  '*';
     return {
       headers: new HttpHeaders(headers)
     };
   }
-  addHeaderss(headers: {}): object {
-    headers = headers ? headers : {};
-    headers['Content-Type'] = "application/json";
-    headers['responseType'] = "arrayBuffer";
-    return {
-      headers: new HttpHeaders(headers)
-    };
-  }
-
-
 }
