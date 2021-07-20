@@ -3,7 +3,7 @@
         <div class="row" [ngClass]='{"border border-primary":users}'>
 
                 <label class="col-5 m-1 form-label">id<input [disabled]="allUsers" class="form-control" type="text"
-                                name="" id="" [(ngModel)]="user.details.id"></label>
+                                name="" id=""  [(ngModel)]="user.details.id"></label>
 
                 <label class="col-5 m-1 form-label">name<input [disabled]="allUsers" class="form-control" type="text"
                                 name="" id="" [(ngModel)]="user.details.name"></label>
@@ -14,9 +14,10 @@
                 <label  class="col-5 m-1 form-label">phone number<input [disabled]="allUsers" class="form-control"
                                 type="text" name="" id="" [(ngModel)]="user.details.phoneNum"></label>
 
-                <label  *ngIf ="!allUsers" class="col-5 m-1 form-label">user name<input  class="form-control"
-                                type="text" name="" id=""  [(ngModel)]="user.details.id"></label>
-
+                <label  *ngIf ="!allUsers" class="col-5 m-1 form-label">user name<input #userName  class="form-control"
+                                type="text" name="" id="" (input)="checkIfUser(userName.value)" [(ngModel)]="user.details.id">
+                                <small *ngIf="isAvailable != null" id="emailHelp" class="form-text" [ngClass]="{'green': !isUse, 'red': isUse}">{{isAvailable}}</small>
+                        </label>
                 <label *ngIf ="!allUsers" class="col-5 m-1 form-label">password<input  class="form-control"
                                 type="text" name="" id="" disabled [value]="user.register.password"></label>
 

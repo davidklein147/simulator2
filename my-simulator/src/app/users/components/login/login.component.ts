@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Login } from 'src/app/interfaces/intern';
 import { DataService } from 'src/app/servers/data.service';
 import { HttpServerService } from 'src/app/servers/http-server.service';
+import { readBuilderProgram } from 'typescript';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,7 @@ export class LoginComponent implements OnInit {
     this.data.userName.next('')
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {};
 
   send(login: Login): void {
     if (login.userName && login.password) {
@@ -26,8 +26,11 @@ export class LoginComponent implements OnInit {
         console.log(res);
         localStorage.setItem("name", res.name)
         this.data.userName.next(localStorage.getItem("name"))
-        if(res.roleNum < 100){
-          this.router.navigate(["supervisor"]);
+        if(res.roleNum < 10){
+          this.router.navigate(["managers/admin"])
+        }
+        else if(res.roleNum < 100){
+          this.router.navigate(["managers/supevisor"]);
         }
         else if(res.moreDetails == null){
           this.router.navigate(["thanks"]);

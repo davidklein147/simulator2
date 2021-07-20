@@ -31,6 +31,7 @@ import { CreateUserComponent } from './supervisor/components/create-user/create-
 import { AddTestComponent } from './supervisor/components/add-test/add-test.component';
 import { TestComponent } from './entrance-form/test/test.component';
 import { DoTestComponent } from './interns/components/do-test/do-test.component';
+import { AdminMienComponent } from './admin/components/admin-mien/admin-mien.component';
 
 
 
@@ -58,6 +59,7 @@ import { DoTestComponent } from './interns/components/do-test/do-test.component'
     AddTestComponent,
     TestComponent,
     DoTestComponent,
+    AdminMienComponent,
   ],
   imports: [
     BrowserModule,

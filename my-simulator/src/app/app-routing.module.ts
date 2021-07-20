@@ -16,6 +16,7 @@ import { CreateUserComponent } from './supervisor/components/create-user/create-
 import { AddTestComponent } from './supervisor/components/add-test/add-test.component';
 import { TestComponent } from './entrance-form/test/test.component';
 import { DoTestComponent } from './interns/components/do-test/do-test.component';
+import { AdminMienComponent } from './admin/components/admin-mien/admin-mien.component';
 
 const routes: Routes = [
   { path: '', component: WellcomeComponent },
@@ -27,18 +28,19 @@ const routes: Routes = [
   { path: 'register', component: Register1BComponent },
   { path: 'login', component: LoginComponent },
   { path: 'questionnaire', component: MienComponent },
-  { path: 'test', component:TestComponent },
+  { path: 'test', component: TestComponent },
   {
-    path: 'supervisor',
-    component: SuperMienComponent,
-    children: [
-      { path: '', component: OptionsListComponent },
-      { path: 'allUsers', component: AllUsersComponent },
-      { path: 'createuser', component: CreateUserComponent },
-      { path: 'addtest', component: AddTestComponent },
-    ]
-  },
-  {path: 'do-test', component: DoTestComponent}
+    path: 'managers/:role', component: OptionsListComponent
+  }
+  ,
+  //children: [
+    { path: 'allUsers', component: AllUsersComponent },
+    { path: 'createuser', component: CreateUserComponent },
+    { path: 'addtest', component: AddTestComponent },
+    { path: 'addsupervisor', component: CreateUserComponent },
+    //]
+  //},
+{ path: 'do-test', component: DoTestComponent }
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User, UserRegister } from 'src/app/interfaces/intern';
+import { HttpServerService } from 'src/app/servers/http-server.service';
 
 @Component({
   selector: 'app-displey-user',
@@ -12,8 +13,10 @@ export class DispleyUserComponent implements OnInit {
 
   user :UserRegister;
   allUsers:boolean;
+  isAvailable:string;
+  isUse:boolean;
 
-  constructor() {
+  constructor( private http:HttpServerService) {
     this.allUsers = false
   }
 
@@ -27,6 +30,18 @@ export class DispleyUserComponent implements OnInit {
       this.allUsers = false;
       this.user.register.password ='1234'
     }
+  }
+
+  checkIfUser(userName: string): void {
+    console.log("chack");
+    if (!userName) {
+      this.isAvailable = ""
+      return
+    }
+    this.http.chackIsUse(userName).subscribe(isUse => {
+      this.isUse = isUse;
+      this.isAvailable = `the user name is${this.isUse?"'nt ":" "}available`;
+    })
   }
 
 }

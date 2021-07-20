@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/servers/data.service';
 
 @Component({
@@ -8,9 +9,12 @@ import { DataService } from 'src/app/servers/data.service';
 })
 export class MienComponent implements OnInit {
 
-  constructor(public data: DataService) { }
+  constructor(public data: DataService, ) { }
 
   ngOnInit(): void {
+  
   }
 
+  
+  
 }
