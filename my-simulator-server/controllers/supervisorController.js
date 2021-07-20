@@ -1,4 +1,3 @@
-const { find } = require("../models/test-model");
 const testModel =require("../models/test-model");
 const userModel = require("../models/user-model");
 

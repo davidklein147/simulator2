@@ -2,8 +2,8 @@ export class Profil {
     userId?: string
     personally: Personally;
     profassionally: Professionally;
-    
-    constructor( userId?:string) {
+
+    constructor(userId?: string) {
         this.userId = userId
         this.personally = new Personally();
         this.profassionally = new Professionally()
@@ -19,10 +19,10 @@ export class Personally {
 
     constructor() {
         this.age = null,
-            this.country = '',
-            this.city = '',
-            this.greduationYear = '',
-            this.academicIinstitution = ''
+        this.country = '',
+        this.city = '',
+        this.greduationYear = '',
+        this.academicIinstitution = ''
     }
 };
 

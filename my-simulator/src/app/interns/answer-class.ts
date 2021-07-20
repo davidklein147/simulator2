@@ -13,3 +13,6 @@ export class Answer {
         this.creationDate = Date.now();
     }
 }
+export interface test{
+    
+}

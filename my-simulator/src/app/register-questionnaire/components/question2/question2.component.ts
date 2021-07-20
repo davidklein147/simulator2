@@ -1,5 +1,6 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import {} from 'events';
+import { HttpServerService } from 'src/app/servers/http-server.service';
 import { Personally } from '../profil';
 import { ProfilService } from '../profil.service';
 
@@ -13,7 +14,8 @@ export class Question2Component implements OnInit {
   @Output() page: EventEmitter<number> = new EventEmitter<number>();
  
 
-  personally: Personally;              
+  personally:  Personally;
+  academics: any;              
 
   scops : {
     NY:string[],
@@ -22,14 +24,15 @@ export class Question2Component implements OnInit {
   stetes: string[];
   citys:string[];
 
-  constructor(private profil:ProfilService ) {
-    this.personally = {
-      age: null,
-      country: '',
-      city: '',
-      greduationYear: '',
-      academicIinstitution: ''
-    };
+  constructor(private profil:ProfilService, private http: HttpServerService ) {
+    this.personally = new Personally();
+    //  {
+    //   age: null,
+    //   country: '',
+    //   city: '',
+    //   greduationYear: '',
+    //   academicIinstitution: ''
+    // };
 
     this.scops = {
       NY: ["Bruklin", "wilumsburg"],
@@ -40,6 +43,22 @@ export class Question2Component implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getAcademics();
+  }
+
+  getAcademics():void{
+    this.http.getWithToken('academics/getallacademics').subscribe(res =>{
+      console.log(res);
+      
+      this.academics = res
+    })
+  }
+  valueChange(event:any):void{
+    //this.personally.academicIinstitution = event.name
+    console.log(event.name);
+    console.log( this.personally.academicIinstitution);
+    
+    
   }
 
   stetesList():void{

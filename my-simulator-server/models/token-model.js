@@ -1,6 +1,6 @@
 const enCoding = require('../utils/token')
 var split = '=!='
-var liveTime = 10 *60 * 1000
+var liveTime = 60 * 60 * 1000
 
 function token(isNew, token, _id, id, name, roleNum) {
     if (isNew) {
@@ -24,11 +24,11 @@ function token(isNew, token, _id, id, name, roleNum) {
     }
 
     this.isExpired = () => {
-    console.log(this.date);
-     //return ! this.date || Date.now() > this.date;
-     return  Date.now() > this.date;
+        console.log(this.date);
+        //return ! this.date || Date.now() > this.date;
+        return Date.now() > this.date;
     }
-    
+
 }
 
 module.exports = token;

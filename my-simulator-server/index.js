@@ -21,6 +21,8 @@ app.use('/api', require('./controllers/tokenController'));
 app.use('/api/users', require('./routers/userRouter'))
 app.use('/api/interns', require('./routers/internRouter'))
 app.use('/api/supervisor', require('./routers/supervisorRouter'))
+app.use('/api/admin', require('./routers/adminRouter'))
+app.use('/api/academics', require('./routers/adminRouter'))
 
 
 
