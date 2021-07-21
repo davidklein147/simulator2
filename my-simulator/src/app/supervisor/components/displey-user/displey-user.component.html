@@ -3,7 +3,7 @@
         <div class="row" [ngClass]='{"border border-primary":users}'>
 
                 <label class="col-5 m-1 form-label">id<input [disabled]="allUsers" class="form-control" type="text"
-                                name="" id=""  [(ngModel)]="user.details.id"></label>
+                                name="" id="" [(ngModel)]="user.details.id"></label>
 
                 <label class="col-5 m-1 form-label">name<input [disabled]="allUsers" class="form-control" type="text"
                                 name="" id="" [(ngModel)]="user.details.name"></label>
@@ -11,23 +11,28 @@
                 <label class="col-5 m-1 form-label">passport<input [disabled]="allUsers" class="form-control"
                                 type="text" name="" id="" [(ngModel)]="user.details.passport"></label>
 
-                <label  class="col-5 m-1 form-label">phone number<input [disabled]="allUsers" class="form-control"
+                <label class="col-5 m-1 form-label">phone number<input [disabled]="allUsers" class="form-control"
                                 type="text" name="" id="" [(ngModel)]="user.details.phoneNum"></label>
 
-                <label  *ngIf ="!allUsers" class="col-5 m-1 form-label">user name<input #userName  class="form-control"
-                                type="text" name="" id="" (input)="checkIfUser(userName.value)" [(ngModel)]="user.details.id">
-                                <small *ngIf="isAvailable != null" id="emailHelp" class="form-text" [ngClass]="{'green': !isUse, 'red': isUse}">{{isAvailable}}</small>
-                        </label>
-                <label *ngIf ="!allUsers" class="col-5 m-1 form-label">password<input  class="form-control"
-                                type="text" name="" id="" disabled [value]="user.register.password"></label>
+                <label *ngIf="!allUsers" class="col-5 m-1 form-label">user name<input #userName class="form-control"
+                                type="text" name="" id="" (input)="checkIfUser(userName.value)"
+                                [value] ="user.details.id" [(ngModel)]="user.register.userName">
+                        <small *ngIf="isAvailable != null" id="emailHelp" class="form-text"
+                                [ngClass]="{'green': !isUse, 'red': isUse}">{{isAvailable}}</small>
+                </label>
+                <label *ngIf="!allUsers" class="col-5 m-1 form-label">password<input class="form-control" type="text"
+                                name="" id="" disabled [value]="user.register.password"></label>
 
                 <label class="col-5 m-1 form-label">role<input [disabled]="allUsers" class="form-control" type="text"
                                 name="" id="" [(ngModel)]="user.role"></label>
 
                 <label class="col-5 m-1 form-label">role number<input [disabled]="allUsers" class="form-control"
                                 type="text" name="" id="" [(ngModel)]="user.roleNum"></label>
+                <label *ngIf="user.roleNum < 100 && user.roleNum != null" class="col-5 m-1 form-label">medical
+                        Institution<input #medicalInstitution [disabled]="allUsers" class="form-control"
+                                type="text"></label>
         </div>
         <br>
-        <button [hidden]="allUsers" di class="col-2 btn btn-secondary text-uppercase">create</button>
+        <button [hidden]="allUsers" class="col-2 btn btn-secondary text-uppercase" (click)="create()">create</button>
         <!-- </form> -->
 </div>

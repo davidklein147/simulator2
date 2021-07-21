@@ -2,18 +2,21 @@ const userModel = require('../models/user-model');
 const enCoding = require('../utils/crypto');
 const token = require('../utils/token');
 const tokenModel = require('../models/token-model');
+const supervisotModel = require("../models/supervisor-model");
 
 function userController() {
     function createUser(req, res) {
         console.log('post');
         console.log(req.body);
-        if (!req.body ||
-            !req.body.details ||
-            !req.body.details.name ||
-            !req.body.register ||
-            !req.body.register.userName ||
-            !req.body.register.password) {
-            console.log("err");
+        if (!req.body 
+            // ||
+            // !req.body.details ||
+            // !req.body.details.name ||
+            // !req.body.register ||
+            // !req.body.register.userName ||
+            // !req.body.register.password
+            ) {
+            console.log("post err");
             return res.status(400).send({ mas: "missing details" });
         }
         if (!req.body.roleNum) {
@@ -23,15 +26,26 @@ function userController() {
             req.body.role = 'intern';
         }
         req.body.register.password = enCoding.cipher(req.body.register.password);
-        var newIntern = new userModel(req.body);
+        var newIntern = userModel(req.body);
         newIntern.save(function (err, newDoc) {
             if (err) {
                 console.log(err);
                 return res.status(500).send(err)
             }
+            if(newDoc.role == "supervisor"){
+                new supervisotModel({userId : newDoc._id, medicalInstitution: req.body.medicalInstitution }).save((err, newSuper) =>{
+                    if(err){
+                        console.log("err err" + err);
+                        return res.status(500).send();
+                    }
+                    return res.status(201).send();
+                });
+
+            }else{
             newToken = new tokenModel(true, null, newDoc._id, req.body.details.id,
                 req.body.details.name, newDoc.roleNum)
             res.status(201).send({ _id: newToken._id, name: newToken.name, roleNum: newDoc.roleNum, token: newToken.token, moreDetails: newDoc.moreDetails });
+            }
             console.log(newDoc);
         });
     }

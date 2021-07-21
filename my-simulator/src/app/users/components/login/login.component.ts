@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
         if(res.roleNum < 10){
           this.router.navigate(["managers/admin"])
         }
-        else if(res.roleNum < 100){
-          this.router.navigate(["managers/supevisor"]);
+        else if(res.roleNum < 100 &&  res.roleNum > 9){
+          this.router.navigate(["managers/supervisor"]);
         }
         else if(res.moreDetails == null){
           this.router.navigate(["thanks"]);
